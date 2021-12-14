@@ -7,29 +7,29 @@
 
 ## Setup --------------------------------------------------------------------
 
+## Making NFI standardized tables from raw data -----------------------------
+# source("data-raw/create-data.R")
 
 ## Sourcing data analysis scripts -------------------------------------------
 source("R/00-libraries.R")
 
 source("R/00-functions.R")
 
-#source("R/01-get-ONA.R") ## Aborted currently only plot info available
+source("R/01-load-data.R")
 
-source("R/02-load-data.R")
+source("R/02-data-checks.R")
 
-## Data checks
-
-## Live trees AGB
+source("R/03-tree-agb.R")
 
 ## Deadwood AGB
 
-## Tree-Plot Cstock
+## Stump AGB
 
-## Tree-Plot checks
+source("R/06-subplot-cstock.R")
 
-## Cluster Cstock
+source("R/07-plot-cstock.R")
 
-## Forest type Cstock
+source("R/08-forest-cstock.R")
 
 ## Reporting tables and figures
 
