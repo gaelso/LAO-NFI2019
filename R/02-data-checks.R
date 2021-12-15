@@ -69,9 +69,14 @@ gr_dbhrange2 <- tree %>%
   left_join(subplot, by = c("plot_id", "subplot_id", "subplot_no")) %>%
   filter(lc_class %in% c("CF", "EF", "DD", "MCB", "MDF")) %>%
   ggplot(aes(x = plot_no, y = tree_dbh, fill = lc_class)) +
-  geom_point(alpha = 0.1, shape = 21) +
-  theme(legend.position = "none") +
-  scale_fill_viridis_d()
+  geom_point(alpha = 0.2, shape = 21) +
+  theme(legend.position = "bottom") +
+  scale_fill_viridis_d() +
+  labs(
+    x = "Plot ID", 
+    y = "Diameter at breast height (cm)", 
+    fill = "Land cover"
+    )
 print(gr_dbhrange2)
 
 ## Deadwood checks ##########################################################

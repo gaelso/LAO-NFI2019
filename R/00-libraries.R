@@ -7,7 +7,11 @@
 
 # install.packages("tidyverse")
 library(tidyverse)
-
+library(sf)
+library(ggtext)
+library(ggrepel)
+library(ggspatial)
+library(ggpubr)
 
 ## Set ggplot theme to theme_bw()
 theme_set(theme_bw())

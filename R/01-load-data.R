@@ -20,3 +20,4 @@ dw <- read_csv("data/deadwood.csv")
 stump <- read_csv("data/stump.csv")
 
 species_list <- read_csv("data/species_list.csv")
+
