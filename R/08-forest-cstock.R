@@ -21,8 +21,8 @@ ftype_agb <- plot_agb %>%
   )
 ftype_agb
 
-
-my_cap <- 'xx: Total number of plots<br> <span style="color:grey;">xx: Total number of subplots</span>'
+## Requires ggtext
+# my_cap <- 'xx: Total number of plots<br> <span style="color:grey;">xx: Total number of subplots</span>'
 
 gr_ftype_agb <- ftype_agb %>%
   ggplot(aes(x = lc_class_main, y = carbon)) +
@@ -30,11 +30,8 @@ gr_ftype_agb <- ftype_agb %>%
   geom_errorbar(aes(ymin = carbon + ci, ymax = carbon - ci, width = 0.5), col = "grey25") +
   geom_label(aes(y = if_else(is.na(sd_carbon), carbon + 10, carbon + ci + 10), label = n_subplot), col = "grey50") +
   geom_label(aes(y = if_else(is.na(sd_carbon), carbon + 20, carbon + ci + 20), label = n_plot)) +
-  labs(caption = my_cap, subtitle = "All subplots, plot level CI") +
-  theme(
-    legend.position = "none",
-    plot.caption = element_markdown(hjust = 0, size = 12)
-    ) +
+  labs(caption = "black: nb of plots, gray: nb of subplots", subtitle = "All subplots, plot level CI") +
+  theme(legend.position = "none") +
   scale_fill_viridis_d()
 print(gr_ftype_agb)
 
@@ -65,10 +62,7 @@ gr_ftype_agb2 <- ftype_agb2 %>%
   geom_label(aes(y = if_else(is.na(sd_carbon), carbon + 10, carbon + ci + 10), label = n_subplot), col = "grey50") +
   geom_label(aes(y = if_else(is.na(sd_carbon), carbon + 20, carbon + ci + 20), label = n_plot)) +
   labs(subtitle = "Filtered subplots, plot level CI") +
-  theme(
-    legend.position = "none",
-    plot.caption = element_markdown(hjust = 0, size = 12)
-  ) +
+  theme(legend.position = "none") +
   scale_fill_viridis_d()
 
 gr_ftype_agb2_wrong <- ftype_agb2 %>%
@@ -78,10 +72,7 @@ gr_ftype_agb2_wrong <- ftype_agb2 %>%
   geom_label(aes(y = if_else(is.na(sd_carbon), carbon + 10, carbon + ci_wrong + 10), label = n_subplot), col = "grey50") +
   geom_label(aes(y = if_else(is.na(sd_carbon), carbon + 20, carbon + ci_wrong + 20), label = n_plot)) +
   labs(subtitle = "Filtered subplots, subplot level CI") +
-  theme(
-    legend.position = "none",
-    plot.caption = element_markdown(hjust = 0, size = 12)
-  ) +
+  theme(legend.position = "none") +
   scale_fill_viridis_d()
 
 gr_ftype_agb_compa <- ggpubr::ggarrange(gr_ftype_agb, gr_ftype_agb2, gr_ftype_agb2_wrong, 

@@ -8,7 +8,7 @@
 # install.packages("tidyverse")
 library(tidyverse)
 library(sf)
-library(ggtext)
+#library(ggtext) ## Not used
 library(ggrepel)
 library(ggspatial)
 library(ggpubr)

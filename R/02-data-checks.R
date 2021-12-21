@@ -57,7 +57,7 @@ table(tree_big$tree_dbh100check)
 ## Tree diameter range ------------------------------------------------------
 
 gr_dbhrange <- tree %>%
-  left_join(subplot, by = "subplot_id") %>%
+  left_join(subplot, by = c("plot_id", "plot_no", "subplot_id", "subplot_no")) %>%
   filter(lc_class %in% c("CF", "EF", "DD", "MCB", "MDF")) %>%
   ggplot(aes(x = lc_class, y = tree_dbh, fill = lc_class)) +
   geom_boxplot() +
@@ -66,7 +66,7 @@ gr_dbhrange <- tree %>%
 print(gr_dbhrange)
 
 gr_dbhrange2 <- tree %>%
-  left_join(subplot, by = c("plot_id", "subplot_id", "subplot_no")) %>%
+  left_join(subplot, by = c("plot_id", "plot_no", "subplot_id", "subplot_no")) %>%
   filter(lc_class %in% c("CF", "EF", "DD", "MCB", "MDF")) %>%
   ggplot(aes(x = plot_no, y = tree_dbh, fill = lc_class)) +
   geom_point(alpha = 0.2, shape = 21) +
