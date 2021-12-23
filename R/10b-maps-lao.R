@@ -6,6 +6,10 @@
 ## ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
+
+## **************************************************************************
+## !!! For demonstration only - this chunk should be moved to the 00-libraries script 
+
 ## First, we need to create a folder font and download a font compatible with Lao
 ## For example the font Sengbuhan from this website: https://laoscript.net/download
 ## We can do it manually or automatically with the R function download.file()
@@ -30,6 +34,9 @@ library(showtext)
 
 font_add("Sengbuhan", "fonts/Sengbuhan.ttf")
 showtext_auto()
+
+## **************************************************************************
+
 
 
 ## We are now ready to add it to ggplot() via theme()

@@ -38,13 +38,8 @@ sf_country
 ggplot(sf_plot, aes(color = plot_agb)) + 
   geom_sf()
 
-## ggplot2 customizations work too
-ggplot(sf_plot, aes(color = plot_agb)) + 
-  geom_sf() +
-  theme_bw() +
-  scale_color_viridis_c() +
-  labs(color = "AGB (t/ha)")
-  
+
+## ggplot2 customization work too
 ggplot(sf_plot, aes(fill = plot_agb)) + 
   geom_sf(shape = 21, size = 2) +
   theme_bw() +
@@ -77,15 +72,17 @@ ggplot() +
   geom_sf(data = sf_country, fill = NA) +
   theme_bw() +
   scale_fill_viridis_d() +
-  labs(fill = "Land cover")
+  labs(fill = "Land cover", size = "AGB (t/ha)")
 
-## Map provinces
-ggplot() +
-  geom_sf(data = sf_plot, aes(fill = province, size = plot_agb), shape = 21) +
+## {dplyr} functions can be applied easily
+sf_plot %>%
+  filter(lc_class_main %in% c("CF", "EF")) %>%
+  ggplot() +
+  geom_sf(aes(fill = lc_class_main, size = plot_agb), shape = 21) +
   geom_sf(data = sf_country, fill = NA) +
   theme_bw() +
   scale_fill_viridis_d() +
-  labs(fill = "Land cover")
+  labs(fill = "Land cover", size = "AGB (t/ha)")
 
 ## Add north arrow and scale with {ggspatial}
 ggplot() +
@@ -115,3 +112,10 @@ ggplot() +
   )
 
 
+## map plot id instead of circles
+ggplot() +
+  geom_sf_text(data = sf_plot, aes(color = plot_agb, label = plot_no), size = 3) +
+  geom_sf(data = sf_country, fill = NA) +
+  theme_bw() +
+  scale_color_viridis_c() +
+  labs(color = "AGB (t/ha)")
