@@ -12,7 +12,7 @@ plot_simple <- plot %>%
 ## Version 1 all subplots even if different 
 plot_agb <- subplot_agb %>%
   left_join(plot_simple, by = "plot_id") %>% 
-  group_by(lc_class_main, plot_id) %>%
+  group_by(lc_class_main, plot_id, plot_no) %>%
   summarise(
     n_subplot    = n(),
     plot_density = mean(n_trees),
