@@ -17,7 +17,7 @@
 
 dir.create("fonts", showWarnings = F)
 
-if ("Sengbuhan" %in% list.files("fonts")) {
+if (!("Sengbuhan.ttf" %in% list.files("fonts"))) {
   
   download.file(
     url = paste0("https://laoscript.net/download/sengbuhan.ttf"), 
